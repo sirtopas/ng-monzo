@@ -1,43 +1,45 @@
-<div class="col-sm-12">
-    <div class="col-sm-4">
-        <div class="panel panel-success">
-            <div class="panel-heading">
-                Transactions
-            </div>
-            <div class="panel-body">
-                <div *ngIf="transactions">
-                    <div *ngFor="let transaction of transactions.transactions">
-                        {{transaction.amount}}
+<div class="row">
+    <div class="col-sm-12">
+        <div class="col-sm-4">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    Transactions
+                </div>
+                <div class="panel-body">
+                    <div *ngIf="transactions">
+                        <div *ngFor="let transaction of transactions.transactions">
+                            {{transaction.amount}}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="col-sm-4">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                Balance
-            </div>
-            <div class="panel-body">
-                <div *ngIf="balance">
-                    <div>
-                        {{balance.balance}}
+        <div class="col-sm-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Balance
+                </div>
+                <div class="panel-body">
+                    <div *ngIf="balance">
+                        <div>
+                            {{balance.balance}}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="col-sm-4">
-        <div class="panel panel-danger">
-            <div class="panel-heading">
-                Pots
-            </div>
-            <div class="panel-body">
-                <div *ngIf="pots">
-                    <div *ngFor="let pot of pots.pots">
-                        {{pot.name}}
+        <div class="col-sm-4">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    Pots
+                </div>
+                <div class="panel-body">
+                    <div *ngIf="pots">
+                        <div *ngFor="let pot of pots.pots">
+                            {{pot.name}}
+                        </div>
                     </div>
                 </div>
             </div>
