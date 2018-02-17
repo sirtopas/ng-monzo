@@ -41,7 +41,7 @@ export class MonzoService extends BaseService {
     getTransactionsWithMerchantInfo(account_id: string): Observable<Transaction[]> {
         this.requestOptions.params = new URLSearchParams();
         this.requestOptions.params.append('account_id', account_id);
-        return this.http.get(environment.baseUrl + '/transactions/' + '?expand[]=merchant', this.requestOptions).map(res => res.json());
+        return this.http.get(environment.baseUrl + '/transactions/' + '?expand[]=merchant', this.requestOptions).map(res => <any[]>res.json().transactions);
     }
 
     getTransactions(account_id: string): Observable<Transaction[]> {

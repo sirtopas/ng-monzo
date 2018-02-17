@@ -3,8 +3,9 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-
 import { MonzoService } from './shared/services/monzo.service';
+
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
     declarations: [
@@ -12,7 +13,10 @@ import { MonzoService } from './shared/services/monzo.service';
     ],
     imports: [
         BrowserModule,
-        HttpModule
+        HttpModule,
+        AgmCoreModule.forRoot({
+            apiKey: 'AIzaSyC92hg32lGCwYB4YjX3RlWSb4WypLya2N8'
+        })
     ],
     providers: [
         MonzoService

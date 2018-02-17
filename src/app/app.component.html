@@ -19,7 +19,7 @@
             </div>
             <div class="panel-body">
                 <div *ngIf="transactions">
-                    <div *ngFor="let transaction of transactions.transactions">
+                    <div *ngFor="let transaction of transactions">
                         {{transaction.amount}}
                     </div>
                 </div>
@@ -57,3 +57,8 @@
         </div>
     </div>
 </div>
+
+<agm-map [latitude]="lat" [longitude]="lng">
+    <agm-marker *ngFor="let merchant of merchants" [latitude]="merchant.address.latitude" [longitude]="merchant.address.longitude">
+    </agm-marker>
+</agm-map>

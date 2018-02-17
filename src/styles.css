@@ -1,3 +1,7 @@
 .navbar-seperator {
     margin-top: 70px;
 }
+
+agm-map {
+    height: 300px;
+  }
