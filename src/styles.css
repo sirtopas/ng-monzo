@@ -4,4 +4,13 @@
 
 agm-map {
     height: 300px;
-  }
+}
+
+.panel-small-height {
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+i {
+    font-size: 20px;
+}
