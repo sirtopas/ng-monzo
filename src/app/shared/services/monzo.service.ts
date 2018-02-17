@@ -7,6 +7,7 @@ import { Pot } from '../model/pot';
 import { Balance } from '../model/balance';
 import { Transaction } from '../model/transaction';
 import 'rxjs/add/operator/map';
+import { Pong } from '../model/pong';
 
 @Injectable()
 export class MonzoService extends BaseService {
@@ -15,8 +16,8 @@ export class MonzoService extends BaseService {
         super(http);
     }
 
-    ping() {
-        return this.http.get(environment.baseUrl + '/ping/whoami', this.requestOptions);
+    ping(): Observable<Pong> {
+        return this.http.get(environment.baseUrl + '/ping/whoami', this.requestOptions).map(res => res.json());
     }
 
     getAccounts(): Observable<Account[]> {

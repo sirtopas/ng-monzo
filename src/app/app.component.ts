@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Rx';
 import { Transaction } from './shared/model/transaction';
 import { Balance } from './shared/model/balance';
 import { Pot } from './shared/model/pot';
+import { Pong } from './shared/model/pong';
 
 @Component({
     selector: 'app-root',
@@ -13,6 +14,7 @@ import { Pot } from './shared/model/pot';
 
 export class AppComponent implements OnInit {
 
+    pong: Pong;
     pots: Pot[];
     balance: Balance;
     transactions: Transaction[];
@@ -21,6 +23,7 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         this.monzoService.ping().subscribe(pong => {
+            this.pong = pong;
             this.monzoService.getAccounts().subscribe(accounts => {
                 this.accounts = accounts;
                 this.monzoService.getTransactions('').subscribe(transactions => {
@@ -29,6 +32,8 @@ export class AppComponent implements OnInit {
                         this.balance = balance;
                         this.monzoService.getPots().subscribe(pots => {
                             this.pots = pots;
+                            console.log(this.pots);
+                            console.log(this.transactions);
                         });
                     });
                 });
