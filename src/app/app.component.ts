@@ -26,14 +26,12 @@ export class AppComponent implements OnInit {
             this.pong = pong;
             this.monzoService.getAccounts().subscribe(accounts => {
                 this.accounts = accounts;
-                this.monzoService.getTransactions('').subscribe(transactions => {
+                this.monzoService.getTransactionsWithMerchantInfo('').subscribe(transactions => {
                     this.transactions = transactions;
                     this.monzoService.getBalance('').subscribe(balance => {
                         this.balance = balance;
                         this.monzoService.getPots().subscribe(pots => {
                             this.pots = pots;
-                            console.log(this.pots);
-                            console.log(this.transactions);
                         });
                     });
                 });
