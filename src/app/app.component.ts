@@ -15,6 +15,7 @@ import { Merchant } from './shared/model/merchant';
 
 export class AppComponent implements OnInit {
 
+    isLoaded = false;
     merchants: Merchant[] = [];
     pong: Pong;
     pots: Pot[];
@@ -24,6 +25,9 @@ export class AppComponent implements OnInit {
     title = 'My first AGM project';
     lat = 51.678418;
     lng = 7.809007;
+    public pieChartLabels: string[] = [];
+    public pieChartData: number[] = [];
+    public pieChartType = 'pie';
 
     constructor(private monzoService: MonzoService) { }
 
@@ -38,6 +42,12 @@ export class AppComponent implements OnInit {
                         if (trans.merchant && trans.merchant.address) {
                             this.merchants.push(trans.merchant);
                         }
+                        if (!this.pieChartLabels.find(l => l === trans.category)) {
+                            this.pieChartLabels.push(trans.category);
+                        }
+                    });
+                    this.pieChartLabels.forEach(l => {
+                        this.pieChartData.push(this.transactions.filter(d => d.category === l).length);
                     });
                     this.lat = this.merchants[0].address.latitude;
                     this.lng = this.merchants[0].address.longitude;
@@ -45,6 +55,7 @@ export class AppComponent implements OnInit {
                         this.balance = balance;
                         this.monzoService.getPots().subscribe(pots => {
                             this.pots = pots;
+                            this.isLoaded = true;
                         });
                     });
                 });

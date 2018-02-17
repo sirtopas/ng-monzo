@@ -3,6 +3,7 @@ import { Merchant } from './merchant';
 export class Transaction {
     account_balance: number;
     amount: number;
+    category: string;
     created: Date;
     currency: string;
     description: string;

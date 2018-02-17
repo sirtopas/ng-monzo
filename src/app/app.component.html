@@ -20,7 +20,7 @@
             <div class="panel-body">
                 <div *ngIf="transactions">
                     <div *ngFor="let transaction of transactions">
-                        {{transaction.amount}}
+                        {{transaction.amount / 100 | currency:'GBP':'symbol'}}
                     </div>
                 </div>
             </div>
@@ -35,7 +35,7 @@
             <div class="panel-body">
                 <div *ngIf="balance">
                     <div>
-                        {{balance.balance}}
+                        {{balance.balance / 100 | currency:'GBP':'symbol'}}
                     </div>
                 </div>
             </div>
@@ -62,3 +62,8 @@
     <agm-marker *ngFor="let merchant of merchants" [latitude]="merchant.address.latitude" [longitude]="merchant.address.longitude">
     </agm-marker>
 </agm-map>
+
+<div class="row" *ngIf="isLoaded">
+    <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"></canvas>
+</div>
